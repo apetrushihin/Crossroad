@@ -41,6 +41,9 @@ public class Main extends Application {
         Label legend = new Label("Use arrows to count: Up-Kesklinn, Down-Musta, Left-Paldiski, Right-Tabasalu");
         legend.setWrapText(true);
         grid.add(legend, 0,4);
+        
+        Label total = new Label("Total cars: " + mustaCount + kesklinnCount + paldiskiCount + tabasaluCount);
+		grid.add(total, 0, 5);
 
         primaryStage.setTitle("Crossroad");
         primaryStage.setScene(scene);
