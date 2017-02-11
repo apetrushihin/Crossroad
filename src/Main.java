@@ -12,6 +12,7 @@ public class Main extends Application {
     private int mustaCount = 0;
     private int paldiskiCount = 0;
     private int tabasaluCount = 0;
+    private int totalCount = 0;
 
 
     public static void main(String[] args) {
@@ -38,12 +39,14 @@ public class Main extends Application {
         Label tabasalu = new Label("Tabasalu: " + tabasaluCount);
         grid.add(tabasalu, 0, 3);
 
+        Label total = new Label("Total cars: 0");
+        grid.add(total, 0, 4);
+
         Label legend = new Label("Use arrows to count: Up-Kesklinn, Down-Musta, Left-Paldiski, Right-Tabasalu");
         legend.setWrapText(true);
-        grid.add(legend, 0,4);
+        grid.add(legend, 0,5);
         
-        Label total = new Label("Total cars: " + mustaCount + kesklinnCount + paldiskiCount + tabasaluCount);
-		grid.add(total, 0, 5);
+
 
         primaryStage.setTitle("Crossroad");
         primaryStage.setScene(scene);
@@ -52,16 +55,24 @@ public class Main extends Application {
         scene.setOnKeyPressed(event -> {
             if(event.getCode()==KeyCode.UP){
                 kesklinnCount++;
-                kesklinn.setText("Kesklinn: "+kesklinnCount);
+                totalCount++;
+                kesklinn.setText("Kesklinn: "+kesklinnCount++);
+                total.setText("Total: " + totalCount++);
             }else if (event.getCode()==KeyCode.DOWN){
                 mustaCount++;
+                totalCount++;
                 musta.setText("Mustamae: "+mustaCount);
+                total.setText("Total: " + totalCount);
             }else if (event.getCode()==KeyCode.LEFT){
                 paldiskiCount++;
+                totalCount++;
                 paldiski.setText("Paldiski: "+ paldiskiCount);
+                total.setText("Total: " + totalCount);
             }else if(event.getCode()==KeyCode.RIGHT){
                 tabasaluCount++;
+                totalCount++;
                 tabasalu.setText("Tabasalu: "+tabasaluCount);
+                total.setText("Total: " + totalCount);
             }
         });
 
